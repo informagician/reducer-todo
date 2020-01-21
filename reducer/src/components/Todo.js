@@ -8,12 +8,13 @@ const Todo = () => {
     const handleChanges = e => {
         setNewTodo(e.target.value)
     }
+
     console.log(newTodo)
     return(
         <section>
             {state.todo.map(item => (
-                <div className="card" key={item.id}>
-                    <h2>{item.item}</h2>
+                <div key={item.id} onClick={() => dispatch({type: 'TOGGLE', payload: item.id})}>
+                    <h2 className={item.completed ? 'completed' : 'not-completed'}>{item.item}</h2>
                 </div>
             ))}
             <input type="text" name="newTodo" onChange={handleChanges} />

@@ -27,6 +27,17 @@ export const Reducer = (state, action) => {
                     id: Date.now()
                 }]
             }
+        case 'TOGGLE':
+            const newTodoList = {todo: state.todo.map(item => {
+                if (item.id === action.payload) {
+                    return {...item,
+                        completed: !item.completed
+                    }
+                } else {
+                    return item
+                }
+            })}
+            return newTodoList;
         default:
             return state;
     }
