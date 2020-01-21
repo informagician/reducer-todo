@@ -1,7 +1,6 @@
-import React from 'react';
 
-
-export const initialState = [
+export const initialState = {
+    todo:[
     {
         item: 'Learn about reducers',
         completed: false,
@@ -13,10 +12,22 @@ export const initialState = [
         id: 3892987590
     }
 ]
+};
 
 
 
-export const Reducer = (initialState, action) => {
+export const Reducer = (state, action) => {
 
-    return initialState;
+    switch(action.type) {
+        case 'ADD_TODO':
+            return {todo:[...state.todo,
+                {
+                    item: action.payload,
+                    completed: false,
+                    id: Date.now()
+                }]
+            }
+        default:
+            return state;
+    }
 }
