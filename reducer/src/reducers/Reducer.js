@@ -30,7 +30,7 @@ export const Reducer = (state, action) => {
         
         case 'CLEAR':
             const newCleared = {todo: state.todo.filter(item => {
-                return item.completed == false
+                return item.completed === false
             })}
             console.log(newCleared)
             return newCleared;

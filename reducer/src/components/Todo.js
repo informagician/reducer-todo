@@ -12,14 +12,18 @@ const Todo = () => {
     console.log(newTodo)
     return(
         <section>
-            {state.todo.map(item => (
-                <div key={item.id} onClick={() => dispatch({type: 'TOGGLE', payload: item.id})}>
-                    <h2 className={item.completed ? 'completed' : 'not-completed'}>{item.item}</h2>
-                </div>
-            ))}
-            <input type="text" name="newTodo" onChange={handleChanges} />
-            <button onClick={() => dispatch({type: 'ADD_TODO', payload: newTodo })}>Add Todo</button>
-            <button onClick={() => dispatch({type: 'CLEAR'})}>Clear Completed</button>
+            <div className="top">
+                <input type="text" name="newTodo" onChange={handleChanges} />
+                <button onClick={() => dispatch({type: 'ADD_TODO', payload: newTodo })}>Add Todo</button>
+                <button onClick={() => dispatch({type: 'CLEAR'})}>Clear Completed</button>
+            </div>
+            <main>
+                {state.todo.map(item => (
+                    <div className="card" key={item.id} onClick={() => dispatch({type: 'TOGGLE', payload: item.id})}>
+                        <h2 className={item.completed ? 'completed' : 'not-completed'}>{item.item}</h2>
+                    </div>
+                ))}
+            </main> 
         </section>
     )
 }
