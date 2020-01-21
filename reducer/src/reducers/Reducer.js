@@ -1,17 +1,6 @@
 
 export const initialState = {
-    todo:[
-    {
-        item: 'Learn about reducers',
-        completed: false,
-        id: 3892987589
-    },
-    {
-        item: 'Learn about reducers 2',
-        completed: false,
-        id: 3892987590
-    }
-]
+    todo:[]
 };
 
 
@@ -38,6 +27,13 @@ export const Reducer = (state, action) => {
                 }
             })}
             return newTodoList;
+        
+        case 'CLEAR':
+            const newCleared = {todo: state.todo.filter(item => {
+                return item.completed == false
+            })}
+            console.log(newCleared)
+            return newCleared;
         default:
             return state;
     }

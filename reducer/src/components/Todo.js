@@ -19,6 +19,7 @@ const Todo = () => {
             ))}
             <input type="text" name="newTodo" onChange={handleChanges} />
             <button onClick={() => dispatch({type: 'ADD_TODO', payload: newTodo })}>Add Todo</button>
+            <button onClick={() => dispatch({type: 'CLEAR'})}>Clear Completed</button>
         </section>
     )
 }
